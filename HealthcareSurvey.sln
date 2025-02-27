@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HealthcareSurvey", "HealthcareSurvey\HealthcareSurvey.csproj", "{39FB5C1A-BEA1-4BF3-B32C-61D2D02CB96D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HealthcareSurvey.Tests", "HealthcareSurvey.Tests\HealthcareSurvey.Tests.csproj", "{C34CAE0B-8038-40C8-9081-686B049FA1C8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{39FB5C1A-BEA1-4BF3-B32C-61D2D02CB96D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39FB5C1A-BEA1-4BF3-B32C-61D2D02CB96D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39FB5C1A-BEA1-4BF3-B32C-61D2D02CB96D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39FB5C1A-BEA1-4BF3-B32C-61D2D02CB96D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C34CAE0B-8038-40C8-9081-686B049FA1C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C34CAE0B-8038-40C8-9081-686B049FA1C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C34CAE0B-8038-40C8-9081-686B049FA1C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C34CAE0B-8038-40C8-9081-686B049FA1C8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
