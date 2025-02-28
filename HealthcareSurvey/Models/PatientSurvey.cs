@@ -1,21 +1,15 @@
 ﻿
 namespace HealthcareSurvey.Models
 {
-    public class PatientSurvey
+    public class PatientSurvey(string patientId)
     {
-        public string PatientId { get; set; }
-        
+        public string PatientId { get; set; } = patientId;
+
         /// <summary>
         /// Ratings for each category (e.g., Staff Courtesy, Wait Times, Facility Cleanliness).
         /// Values typically range from 1 to 5.
         /// </summary>
-        public Dictionary<SurveyCategory, int> CategoryRatings { get; set; }
-
-        public PatientSurvey(string patientId)
-        {
-            PatientId = patientId;
-            CategoryRatings = new Dictionary<SurveyCategory, int>();
-        }
+        public Dictionary<SurveyCategory, int> CategoryRatings { get; set; } = [];
 
         public void SetRating(SurveyCategory category, int rating)
         {
