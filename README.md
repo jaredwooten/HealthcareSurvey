@@ -12,7 +12,7 @@ In the pair programming paradigm, there are two roles: Driver and Navigator (see
 - Demonstrate technical expertise
 - Use tests to drive new behavior
 - Keep existing tests passing
-- Code uses clean architecture and patterns
+- Use clean code and design patterns
 
 ## Part 1: Fix the Failing Test
 
