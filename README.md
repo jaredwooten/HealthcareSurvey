@@ -2,6 +2,10 @@
 
 This coding exercise focuses on a patient satisfaction survey system for healthcare facilities.
 
+In this exercise, you will do pair programming with another software engineer. They will take on the role of a less experienced engineer on your team.
+
+In the pair programming paradigm, there are two roles: Driver and Navigator (see [this resource](https://www.industriallogic.com/pages/cheat-sheets/pdfs/Ensemble%20Programming%20Cheat%20Sheet.pdf)). You will be the *Navigator* and your pair engineer will be the *Driver*.
+
 ## Part 1: Fix the Failing Test
 
 The current implementation of `SurveyAggregator.CalculateOverallScore()` has a failing test. Surveys that contain categories without scores should not be included in the aggregate score. Review and fix the weighting calculation to ensure proper score aggregation.
