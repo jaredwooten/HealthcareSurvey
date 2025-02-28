@@ -5,17 +5,18 @@ namespace HealthcareSurvey.Services
     /// <summary>
     /// Combines ratings from different categories into a single "experience score."
     /// </summary>
-    public static class SurveyAggregator
+    public class SurveyAggregator(PatientSurvey survey)
     {
+        private readonly PatientSurvey _survey = survey;
+
         /// <summary>
-        /// A bug currently exists in how we handle weighting for Staff Courtesy. 
-        /// We also want to add a new feature to allow dynamic weighting or new categories.
+        /// Calculates the overall score based on ratings from different categories.
         /// </summary>
-        public static decimal CalculateOverallScore(PatientSurvey survey)
+        public decimal CalculateOverallScore()
         {
-            var staffCourtesyRating = survey.GetRating(SurveyCategory.StaffCourtesy);
-            var waitTimesRating = survey.GetRating(SurveyCategory.WaitTimes);
-            var facilityCleanlinessRating = survey.GetRating(SurveyCategory.FacilityCleanliness);
+            var staffCourtesyRating = _survey.GetRating(SurveyCategory.StaffCourtesy);
+            var waitTimesRating = _survey.GetRating(SurveyCategory.WaitTimes);
+            var facilityCleanlinessRating = _survey.GetRating(SurveyCategory.FacilityCleanliness);
 
             var staffCourtesyWeight = 0.3m;
             var waitTimesWeight = 0.3m;

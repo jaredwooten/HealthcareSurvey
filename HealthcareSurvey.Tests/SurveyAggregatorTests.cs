@@ -12,8 +12,9 @@ namespace HealthcareSurvey.Tests
             survey.SetRating(SurveyCategory.StaffCourtesy, 5);
             survey.SetRating(SurveyCategory.WaitTimes, 3);
             survey.SetRating(SurveyCategory.FacilityCleanliness, 4);
+            var aggregator = new SurveyAggregator(survey);
 
-            var result = SurveyAggregator.CalculateOverallScore(survey);
+            var result = aggregator.CalculateOverallScore();
 
             Assert.Equal(4.0m, result);
         }
@@ -25,8 +26,9 @@ namespace HealthcareSurvey.Tests
             survey.SetRating(SurveyCategory.StaffCourtesy, 2);
             survey.SetRating(SurveyCategory.WaitTimes, 4);
             survey.SetRating(SurveyCategory.FacilityCleanliness, 3);
-
-            var result = SurveyAggregator.CalculateOverallScore(survey);
+            var aggregator = new SurveyAggregator(survey);
+            
+            var result = aggregator.CalculateOverallScore();
 
             Assert.Equal(3.0m, result);
         }
@@ -37,8 +39,9 @@ namespace HealthcareSurvey.Tests
             var survey = new PatientSurvey("PatientC");
             survey.SetRating(SurveyCategory.StaffCourtesy, 5);
             survey.SetRating(SurveyCategory.WaitTimes, 4);
-
-            var result = SurveyAggregator.CalculateOverallScore(survey);
+            var aggregator = new SurveyAggregator(survey);
+            
+            var result = aggregator.CalculateOverallScore();
 
             Assert.Equal(4.5m, result);
         }
