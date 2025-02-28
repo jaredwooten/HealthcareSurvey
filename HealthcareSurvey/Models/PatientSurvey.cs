@@ -19,7 +19,6 @@ namespace HealthcareSurvey.Models
 
         public void SetRating(SurveyCategory category, int rating)
         {
-            // Basic validation for rating range
             if (rating < 1) rating = 1;
             if (rating > 5) rating = 5;
 

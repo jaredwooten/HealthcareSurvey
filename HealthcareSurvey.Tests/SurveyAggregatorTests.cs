@@ -18,9 +18,29 @@ namespace HealthcareSurvey.Tests
             Assert.Equal(4.0m, result);
         }
 
-        // Additional test ideas:
-        // - Test with varied ratings
-        // - Test no rating set for a category
-        // - Test adding new categories or dynamic weighting
+        [Fact]
+        public void CalculateOverallScore_VariedRatings_ReturnsExpectedScore()
+        {
+            var survey = new PatientSurvey("PatientB");
+            survey.SetRating(SurveyCategory.StaffCourtesy, 2);
+            survey.SetRating(SurveyCategory.WaitTimes, 4);
+            survey.SetRating(SurveyCategory.FacilityCleanliness, 3);
+
+            var result = SurveyAggregator.CalculateOverallScore(survey);
+
+            Assert.Equal(3.0m, result);
+        }
+
+        [Fact]
+        public void CalculateOverallScore_NoRatingForCategory_ReturnsExpectedScore()
+        {
+            var survey = new PatientSurvey("PatientC");
+            survey.SetRating(SurveyCategory.StaffCourtesy, 5);
+            survey.SetRating(SurveyCategory.WaitTimes, 4);
+
+            var result = SurveyAggregator.CalculateOverallScore(survey);
+
+            Assert.Equal(4.5m, result);
+        }
     }
 }

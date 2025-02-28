@@ -17,7 +17,7 @@ namespace HealthcareSurvey.Services
             var waitTimesRating = survey.GetRating(SurveyCategory.WaitTimes);
             var facilityCleanlinessRating = survey.GetRating(SurveyCategory.FacilityCleanliness);
 
-            var staffCourtesyWeight = 0.0m;
+            var staffCourtesyWeight = 0.3m;
             var waitTimesWeight = 0.3m;
             var facilityCleanWeight = 0.4m;
 
