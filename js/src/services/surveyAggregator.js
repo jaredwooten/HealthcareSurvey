@@ -21,24 +21,20 @@ class SurveyAggregator {
         const waitTimesRating = this._survey.getRating(SurveyCategory.WaitTimes);
         const facilityCleanlinessRating = this._survey.getRating(SurveyCategory.FacilityCleanliness);
         
-        const staffCourtesyWeight = 0.3;
-        const waitTimesWeight = 0.3;
-        const facilityCleanWeight = 0.4;
-        
         let totalWeight = 0;
         let weightedSum = 0;
         
         if (staffCourtesyRating > 0) {
-            weightedSum += staffCourtesyRating * staffCourtesyWeight;
-            totalWeight += staffCourtesyWeight;
+            weightedSum += staffCourtesyRating * 0.3;
+            totalWeight += 0.3;
         }
         if (waitTimesRating > 0) {
-            weightedSum += waitTimesRating * waitTimesWeight;
-            totalWeight += waitTimesWeight;
+            weightedSum += waitTimesRating * 0.3;
+            totalWeight += 0.3;
         }
         if (facilityCleanlinessRating > 0) {
-            weightedSum += facilityCleanlinessRating * facilityCleanWeight;
-            totalWeight += facilityCleanWeight;
+            weightedSum += facilityCleanlinessRating * 0.4;
+            totalWeight += 0.4;
         }
         
         return Number((totalWeight > 0 ? weightedSum / totalWeight : 0).toFixed(2));

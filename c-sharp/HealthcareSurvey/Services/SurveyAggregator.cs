@@ -18,27 +18,23 @@ namespace HealthcareSurvey.Services
             var waitTimesRating = _survey.GetRating(SurveyCategory.WaitTimes);
             var facilityCleanlinessRating = _survey.GetRating(SurveyCategory.FacilityCleanliness);
 
-            var staffCourtesyWeight = 0.3m;
-            var waitTimesWeight = 0.3m;
-            var facilityCleanWeight = 0.4m;
-
             var totalWeight = 0m;
             var weightedSum = 0m;
 
             if (staffCourtesyRating > 0)
             {
-                weightedSum += staffCourtesyRating * staffCourtesyWeight;
-                totalWeight += staffCourtesyWeight;
+                weightedSum += staffCourtesyRating * 0.3m;
+                totalWeight += 0.3m;
             }
             if (waitTimesRating > 0)
             {
-                weightedSum += waitTimesRating * waitTimesWeight;
-                totalWeight += waitTimesWeight;
+                weightedSum += waitTimesRating * 0.3m;
+                totalWeight += 0.3m;
             }
             if (facilityCleanlinessRating > 0)
             {
-                weightedSum += facilityCleanlinessRating * facilityCleanWeight;
-                totalWeight += facilityCleanWeight;
+                weightedSum += facilityCleanlinessRating * 0.4m;
+                totalWeight += 0.4m;
             }
 
             return totalWeight > 0 ? weightedSum / totalWeight : 0;
