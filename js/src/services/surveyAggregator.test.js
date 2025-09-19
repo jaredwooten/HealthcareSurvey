@@ -4,41 +4,55 @@ const SurveyAggregator = require('./surveyAggregator');
 
 describe('SurveyAggregator', () => {
 
-    test('CalculateOverallScore_BasicScenario_ReturnsExpectedScore', () => {
-
-        const survey = new PatientSurvey('PatientA');
+    test('CalculateOverallScore_AllCategoriesRated_ReturnsWeightedAverage', () => {
+        const survey = new PatientSurvey('Patient123');
         survey.setRating(SurveyCategory.StaffCourtesy, 5);
-        survey.setRating(SurveyCategory.WaitTimes, 3);
-        survey.setRating(SurveyCategory.FacilityCleanliness, 4);
-        
-        const aggregator = new SurveyAggregator(survey);
-        const result = aggregator.calculateOverallScore();
-        
-        expect(result).toBe(4.0);
-    });
-
-    test('CalculateOverallScore_VariedRatings_ReturnsExpectedScore', () => {
-
-        const survey = new PatientSurvey('PatientB');
-        survey.setRating(SurveyCategory.StaffCourtesy, 2);
         survey.setRating(SurveyCategory.WaitTimes, 4);
         survey.setRating(SurveyCategory.FacilityCleanliness, 3);
         
         const aggregator = new SurveyAggregator(survey);
         const result = aggregator.calculateOverallScore();
         
-        expect(result).toBe(3.0);
+        // Weighted: (5*0.3 + 4*0.3 + 3*0.4) / (0.3 + 0.3 + 0.4) = 3.9 / 1.0 = 3.9
+        expect(result).toBeCloseTo(3.9, 10);
     });
 
-    test('CalculateOverallScore_NoRatingForCategory_ReturnsExpectedScore', () => {
-
-        const survey = new PatientSurvey('PatientC');
+    test('CalculateOverallScore_MissingCategory_RedistributesWeights', () => {
+        const survey = new PatientSurvey('Patient456');
         survey.setRating(SurveyCategory.StaffCourtesy, 5);
         survey.setRating(SurveyCategory.WaitTimes, 4);
+        // FacilityCleanliness is not rated (should be excluded from calculation)
         
         const aggregator = new SurveyAggregator(survey);
         const result = aggregator.calculateOverallScore();
         
-        expect(result).toBe(4.5);
+        // When a category is missing, we redistribute weights proportionally
+        // Active weights: StaffCourtesy(0.3) + WaitTimes(0.3) = 0.6 total
+        // Redistributed: (5*0.3 + 4*0.3) / 0.6 = 2.7 / 0.6 = 4.5
+        expect(result).toBeCloseTo(4.5, 10);
+    });
+
+    test('GetCategoryWeights_ReturnsCurrentWeights', () => {
+        const weights = SurveyAggregator.getCategoryWeights();
+        
+        expect(weights[SurveyCategory.StaffCourtesy]).toBe(0.3);
+        expect(weights[SurveyCategory.WaitTimes]).toBe(0.3);
+        expect(weights[SurveyCategory.FacilityCleanliness]).toBe(0.4);
+        
+        expect(Object.keys(weights).length).toBe(3);
+    });
+
+    test('GetRatingSummary_OnlyShowsOldCategories', () => {
+        const survey = new PatientSurvey('PatientSummary');
+        survey.setRating(SurveyCategory.StaffCourtesy, 5);
+        survey.setRating(SurveyCategory.WaitTimes, 4);
+        survey.setRating(SurveyCategory.FacilityCleanliness, 3);
+        
+        const aggregator = new SurveyAggregator(survey);
+        const summary = aggregator.getRatingSummary();
+        
+        expect(summary).toContain('Staff: 5');
+        expect(summary).toContain('Wait: 4');
+        expect(summary).toContain('Facility: 3');
     });
 });

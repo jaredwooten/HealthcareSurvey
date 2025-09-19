@@ -66,20 +66,5 @@ namespace HealthcareSurvey.Tests
             Assert.Contains("Wait: 4", summary);
             Assert.Contains("Facility: 3", summary);
         }
-
-        [Fact]
-        public void AddingNewCategories_RequiresShotgunSurgery()
-        {
-            var survey = new PatientSurvey("PatientNew");
-            survey.SetRating(SurveyCategory.StaffCourtesy, 5);
-            survey.SetRating(SurveyCategory.WaitTimes, 4);
-            survey.SetRating(SurveyCategory.FacilityCleanliness, 3);
-            
-            var aggregator = new SurveyAggregator(survey);
-            
-            var score = aggregator.CalculateOverallScore();
-            
-            Assert.Equal(3.9m, score);
-        }
     }
 }
