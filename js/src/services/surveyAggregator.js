@@ -45,18 +45,6 @@ class SurveyAggregator {
     }
 
     /**
-     * Gets all the category weights
-     * @returns {Object} Object with category weights
-     */
-    static getCategoryWeights() {
-        return {
-            [SurveyCategory.StaffCourtesy]: 0.3,
-            [SurveyCategory.WaitTimes]: 0.3,
-            [SurveyCategory.FacilityCleanliness]: 0.4
-        };
-    }
-
-    /**
      * Gets a summary of all ratings
      * @returns {string} Summary of ratings
      */

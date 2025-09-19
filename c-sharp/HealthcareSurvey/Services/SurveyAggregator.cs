@@ -45,19 +45,6 @@ namespace HealthcareSurvey.Services
         }
 
         /// <summary>
-        /// Gets all the category weights
-        /// </summary>
-        public static Dictionary<SurveyCategory, decimal> GetCategoryWeights()
-        {
-            return new Dictionary<SurveyCategory, decimal>
-            {
-                { SurveyCategory.StaffCourtesy, 0.3m },
-                { SurveyCategory.WaitTimes, 0.3m },
-                { SurveyCategory.FacilityCleanliness, 0.4m }
-            };
-        }
-
-        /// <summary>
         /// Gets a summary of all ratings
         /// </summary>
         public string GetRatingSummary()

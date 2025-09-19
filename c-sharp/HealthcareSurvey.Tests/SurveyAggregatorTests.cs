@@ -40,18 +40,6 @@ namespace HealthcareSurvey.Tests
         }
 
         [Fact]
-        public void GetCategoryWeights_ReturnsCurrentWeights()
-        {
-            var weights = SurveyAggregator.GetCategoryWeights();
-
-            Assert.Equal(0.3m, weights[SurveyCategory.StaffCourtesy]);
-            Assert.Equal(0.3m, weights[SurveyCategory.WaitTimes]);
-            Assert.Equal(0.4m, weights[SurveyCategory.FacilityCleanliness]);
-            
-            Assert.Equal(3, weights.Count);
-        }
-
-        [Fact]
         public void GetRatingSummary_OnlyShowsOldCategories()
         {
             var survey = new PatientSurvey("PatientSummary");

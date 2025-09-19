@@ -32,16 +32,6 @@ describe('SurveyAggregator', () => {
         expect(result).toBeCloseTo(4.5, 10);
     });
 
-    test('GetCategoryWeights_ReturnsCurrentWeights', () => {
-        const weights = SurveyAggregator.getCategoryWeights();
-        
-        expect(weights[SurveyCategory.StaffCourtesy]).toBe(0.3);
-        expect(weights[SurveyCategory.WaitTimes]).toBe(0.3);
-        expect(weights[SurveyCategory.FacilityCleanliness]).toBe(0.4);
-        
-        expect(Object.keys(weights).length).toBe(3);
-    });
-
     test('GetRatingSummary_OnlyShowsOldCategories', () => {
         const survey = new PatientSurvey('PatientSummary');
         survey.setRating(SurveyCategory.StaffCourtesy, 5);
