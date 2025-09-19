@@ -5,3 +5,9 @@ riderModule.iml
 /_ReSharper.Caches/
 .idea/
 **/node_modules/
+
+# Coverage reports
+**/coverage/
+coverage/
+*.lcov
+.nyc_output/
