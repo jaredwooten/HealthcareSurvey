@@ -1,7 +1,7 @@
 using HealthcareSurvey.Models;
 using HealthcareSurvey.Services;
 
-namespace HealthcareSurvey.Tests
+namespace HealthcareSurvey.Tests.Services
 {
     public class SurveyAggregatorTests
     {
