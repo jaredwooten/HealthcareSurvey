@@ -20,21 +20,6 @@ The current implementation of the survey aggregator has several code smells. Add
 
 ## Part 2: Add New Survey Categories
 
-Extend the survey system by adding support for two new categories that have been added to the survey system:
+Extend the survey system by adding support for two new categories that have been added to the survey system (specified here: [NEW_CATEGORIES_SPEC.md](NEW_CATEGORIES_SPEC.md)).
 
-1. **Billing Experience** - How satisfied patients are with the billing process, clarity of charges, and insurance handling
-2. **Telehealth Quality** - For remote consultations, how well the technology worked and the quality of the virtual care experience
 
-These categories already exist in the `SurveyCategory` enum but are not yet supported by the `SurveyAggregator` class. The candidate should refactor the code to support all categories without requiring changes in multiple places when new categories are added in the future.
-
-### Expected Category Weights
-
-When all 5 categories are properly supported, the weights should be distributed as follows:
-
-- **Staff Courtesy**: 25% (0.25)
-- **Wait Times**: 20% (0.20) 
-- **Facility Cleanliness**: 25% (0.25)
-- **Billing Experience**: 15% (0.15)
-- **Telehealth Quality**: 15% (0.15)
-
-Currently, only the first 3 categories are used with weights of 30%, 30%, and 40% respectively. After the refactoring, a survey with ratings of [5, 4, 3, 2, 5] should yield an overall score of 3.8 instead of the current 3.9.
