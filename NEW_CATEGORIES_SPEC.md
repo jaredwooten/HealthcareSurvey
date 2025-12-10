@@ -15,4 +15,4 @@ When all 5 categories are properly supported, the weights should be distributed 
 - **Billing Experience**: 15% (0.15)
 - **Telehealth Quality**: 15% (0.15)
 
-Currently, only the first 3 categories are used with weights of 30%, 30%, and 40% respectively. After the refactoring, a survey with ratings of [5, 4, 3, 2, 5] should yield an overall score of 3.8 instead of the current 3.9.
+Currently, only the first 3 categories are used with weights of 30%, 30%, and 40% respectively. After the refactoring, a survey with ratings of [5, 4, 3, 2, 5] should yield an overall score of 3.85 instead of the current 3.9.
